@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BiSolidUserCircle } from "react-icons/bi";
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const NavBar = () => {
+  const {displayName} = useContext(AuthContext)
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -15,6 +17,7 @@ const NavBar = () => {
          <a>Item2</a>
         </li>
         <li><a>Item 3</a></li>
+        <p>{displayName}</p>
       </ul>
     </div>
   </div>

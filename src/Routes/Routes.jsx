@@ -7,6 +7,8 @@ import Home from '../pages/Home/Home/Home';
 import Category from '../pages/Home/Home/Category/Category';
 import News from '../pages/Home/Home/News/News/News';
 import NewsCars from '../pages/Home/Home/News/NewsCard/NewsCars';
+import SignUP from '../pages/Authenticate/SignUp/SignUP';
+import SignIn from '../pages/Authenticate/SignIn/SignIn';
 
   const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ import NewsCars from '../pages/Home/Home/News/NewsCard/NewsCars';
         },
        
       ]
+    },
+    {
+      path:'/signUp',
+      element:<SignUP></SignUP>
+    },
+    {
+      path:'/logIn',
+      element:<SignIn></SignIn>
     },
     {
       path:'/news/:id',
