@@ -5,6 +5,8 @@ import {
 import Main from "../layouts/Main";
 import Home from '../pages/Home/Home/Home';
 import Category from '../pages/Home/Home/Category/Category';
+import News from '../pages/Home/Home/News/News/News';
+import NewsCars from '../pages/Home/Home/News/NewsCard/NewsCars';
 
   const router = createBrowserRouter([
     {
@@ -25,6 +27,18 @@ import Category from '../pages/Home/Home/Category/Category';
        
       ]
     },
+    {
+      path:'/news/:id',
+      element: <News></News>,
+      loader:({params})=>fetch(`http://localhost:5000/news/${params.id}`)
+      // children:[
+      //   {
+      //     path:':id',
+      //     element:<NewsCars></NewsCars>,
+      //     loader:({params})=>fetch(`http://localhost:5000/news/${params.id}`)
+      //   }
+      // ]
+    }
   ]);
 
   export default router;
