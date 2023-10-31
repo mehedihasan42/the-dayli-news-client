@@ -1,9 +1,17 @@
 import React, { useContext } from 'react';
 import { BiSolidUserCircle } from "react-icons/bi";
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const {displayName} = useContext(AuthContext)
+  const {displayName,user,logOut} = useContext(AuthContext)
+
+  const handleLogout = ()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error=>console.log(error))
+  }
+
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -31,8 +39,11 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end space-x-2">
-    <a className="btn"><BiSolidUserCircle className='text-2xl'/></a>
-    <a className="btn">Log in</a>
+    {user?<Link onClick={handleLogout} className="btn">Log out</Link>:
+   <> <a className="btn"><BiSolidUserCircle className='text-2xl'/></a>
+   <Link to='/logIn' className="btn">Log in</Link></>
+    }
+    
   </div>
 </div>
     );

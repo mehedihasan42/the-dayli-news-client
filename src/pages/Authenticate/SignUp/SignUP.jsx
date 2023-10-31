@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SignUP = () => {
     const {signUp} = useContext(AuthContext)
+    const [accepted,setAccepted] = useState()
 
     const handleSignUp = event =>{
         event.preventDefault()
@@ -17,6 +19,10 @@ const SignUP = () => {
             console.log(user)
         })
         .catch(error=>console.log(error))
+    }
+
+    const handleCheck = event =>{
+      setAccepted(event.target.checked)
     }
 
     return (
@@ -40,10 +46,12 @@ const SignUP = () => {
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>
               </div>
+              <input onClick={handleCheck} type="checkbox" className="checkbox" />
               <div className="form-control mt-6">
-                <input type='submit' value={'sign up'} className="btn btn-neutral"/>
+                <input type='submit' disabled={!accepted} value={'sign up'} className="btn btn-neutral"/>
               </div>
             </form>
+            <Link to='/logIn'>Log in</Link>
           </div>
         </div>
       </div>

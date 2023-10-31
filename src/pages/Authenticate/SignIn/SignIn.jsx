@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
 
@@ -40,6 +41,7 @@ const SignIn = () => {
                 <input type='submit' value={'log in'} className="btn btn-neutral"/>
               </div>
             </form>
+            <Link to='/signUp'>Sign Up</Link>
           </div>
         </div>
       </div>
