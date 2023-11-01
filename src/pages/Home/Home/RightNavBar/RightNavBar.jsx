@@ -4,13 +4,15 @@ import {  BsFacebook, BsTwitter } from "react-icons/bs";
 import qZone1 from '../../../../assets/qZone1.png'
 import qZone2 from '../../../../assets/qZone2.png'
 import qZone3 from '../../../../assets/qZone3.png'
+import GoogleLogin from '../../../Authenticate/GoogleLogin/GoogleLogin';
 
 const RightNavBar = () => {
+
     return (
        <div className='space-y-6'>
         <div className='space-y-2'>
             <h2 className='font-bold text-xl'>Log in with</h2>
-            <button className='btn btn-outline'>Login with Google</button><br />
+           <GoogleLogin></GoogleLogin>
             <button className="btn btn-outline btn-error">Login with Github</button>
         </div>
         <div>

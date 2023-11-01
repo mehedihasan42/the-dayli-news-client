@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
 
-    const {signUp} = useContext(AuthContext)
+    const {logIn} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const form = location.state?.from?.pathname;
 
     const handleSignUp = event =>{
         event.preventDefault()
@@ -12,9 +15,16 @@ const SignIn = () => {
         const email = from.email.value;
         const password = from.password.value;
         console.log(email,password)
-
-       
-    }
+        
+        logIn(email,password)
+        .then(result=>{
+          const user = result.user;
+          console.log(user)
+          navigate(form, { replace: true })
+        })
+        .catch(error=>console.log(error))
+        
+      }
 
     return (
         <div className="hero min-h-screen bg-base-200">

@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const SignUP = () => {
     const {signUp} = useContext(AuthContext)
     const [accepted,setAccepted] = useState()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const form = location.state?.from?.pathname;
 
     const handleSignUp = event =>{
         event.preventDefault()
@@ -17,6 +21,7 @@ const SignUP = () => {
         .then(result=>{
             const user = result.user;
             console.log(user)
+            navigate(form, { replace: true })
         })
         .catch(error=>console.log(error))
     }
@@ -46,7 +51,10 @@ const SignUP = () => {
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>
               </div>
-              <input onClick={handleCheck} type="checkbox" className="checkbox" />
+              <div className="form-control">
+                <input onClick={handleCheck} type="checkbox" className="checkbox" /><Link>Accecpt trams and conditions</Link>
+              </div>
+              
               <div className="form-control mt-6">
                 <input type='submit' disabled={!accepted} value={'sign up'} className="btn btn-neutral"/>
               </div>

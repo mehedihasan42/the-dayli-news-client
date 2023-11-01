@@ -7,7 +7,7 @@ import pic3 from '../../../../assets/3.png'
 const LeftNavBar = () => {
     const [categorys,setCategorys] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/category')
+        fetch('https://the-daily-news-server-28k1uqluy-mehedihasan42.vercel.app/category')
         .then(res=>res.json())
         .then(data=>setCategorys(data))
         .catch(error=>console.error(error))
